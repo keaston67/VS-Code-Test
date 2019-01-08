@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+<a routerLink="/" class="navbar-brand">Recipe Book</a>
+    </div>
+    <div class="navbar-default">
+      <ul class="nav navbar-nav">
+        <!-- A. set value in emitted event -->
+        <!-- <li><a href="#" (click)="goto('recipes')">Recipes</a></li>
+        <li><a href="#" (click)="goto('shopping-list')">Shopping List</a></li> -->
+        <!-- Use this to inject a label value for toggle -->
+        <!-- <li><a href="#" (click)="goto('recipe')">{{label}}</a></li> -->
+        <!-- B. set booleans for each menu button and update button label -->
+        <!-- <li><a href="#" (click)="gotoRec()">{{label}}</a></li> -->
+        <!-- <li><a href="#" (click)="gotoShop()">{{label}}</a></li> -->
+        <li><a routerLink="/recipes" routerLinkActive="active">Recipes</a></li>
+        <li><a [routerLink]="['/shopping-list']" routerLinkActive="active">Shopping List</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <ng-template [ngIf]="!isAuthenticated()">
+            <li><a routerLink="/signup">Register</a></li>
+            <li><a routerLink="/signin">Login</a></li>
+        </ng-template>
+        <li>
+        <a style="cursor: pointer;" (click)="onLogout()" *ngIf="isAuthenticated()">Logout</a>
+        </li>
+        <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
+          <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer" (click)="onSave()">Save Data</a></li>
+            <li><a style="cursor: pointer" (click)="onFetch()">Fetch Data</a></li>
+          </ul> 
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <p class="fromApp">from App: {{ fromApp }}</p> -->
+</nav>
+
+
+
+
+
